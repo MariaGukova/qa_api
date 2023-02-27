@@ -16,7 +16,6 @@ public class Bug {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)//нельзя изменять и не может быть null
     private Long id;
-
     @OneToOne
     private Task task;
     @OneToOne
@@ -29,12 +28,11 @@ public class Bug {
     private Component component;
     @OneToOne
     private Users creator;
-
     private String summary;
     private String description;
     private String attachment;
 
-    public Bug(Task task,Users creator, Component component, Hardware hardware, Status status, Assignee assignee, String summary, String description) {
+    public Bug(Task task, Users creator, Component component, Hardware hardware, Status status, Assignee assignee, String summary, String description) {
         this.task = task;
         this.creator = creator;
         this.component = component;

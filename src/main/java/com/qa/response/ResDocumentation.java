@@ -1,10 +1,7 @@
 package com.qa.response;
 
-import com.qa.model.DocumentationDivision;
-import com.qa.model.Task;
 import lombok.*;
 
-import javax.persistence.*;
 
 @NoArgsConstructor
 @Getter

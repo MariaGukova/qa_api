@@ -1,6 +1,7 @@
 package com.qa.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -23,9 +24,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeHttpRequests()
                 .antMatchers("/bug/**").hasRole("ADMIN")
-                .antMatchers("/scenario/**").hasRole("ADMIN")
-                .antMatchers("/doc/add").hasRole("ADMIN")
-                .antMatchers("/scenario/add").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET,"/scenario/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET,"/doc/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/doc/add").hasRole("USER")
+                .antMatchers(HttpMethod.POST,"/scenario/add").hasRole("USER")
                 .and()
                 .csrf().disable()
                 .formLogin().disable()
